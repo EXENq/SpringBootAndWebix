@@ -29,8 +29,8 @@ public abstract class AbstractRestController<T, R extends JpaRepository<T, ?>> {
         return repo.save(obj);
     }
 
-    @PutMapping("id")
-    public T update(@PathVariable T DbObj, @RequestBody T obj){
+    @PutMapping("{id}")
+    public T update(@PathVariable("id") T DbObj, @RequestBody T obj){
         BeanUtils.copyProperties(obj, DbObj, "id");
 
         return repo.save(DbObj);
